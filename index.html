@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: The Link Layer Explained | Priyanshu Singh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFAFA;
+            color: rgba(0, 0, 0, 0.84);
+            font-size: 20px;
+        }
+
+        .container {
+            max-width: 740px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: left;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        header h1 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .author-name {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1em;
+            color: #555;
+            font-weight: 400;
+        }
+        
+        .publish-date {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        h2 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 2.2em;
+            color: #222;
+            margin-top: 50px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 30px;
+            font-weight: 700;
+        }
+
+        p, li {
+            font-size: 1.05em;
+            letter-spacing: -0.003em;
+        }
+
+        a {
+            color: #0073e6;
+            text-decoration: none;
+            text-shadow: 0 0 1px rgba(0, 115, 230, 0.1);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong, b {
+            font-weight: 700;
+            color: #000;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 40px auto;
+            border-radius: 4px;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            font-family: 'Source Sans 3', sans-serif;
+            color: #666;
+            font-size: 0.8em;
+            margin-top: -30px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-box {
+            background-color: #f7f7f7;
+            border-left: 4px solid #3d8bfd;
+            padding: 20px 30px;
+            margin-top: 50px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 60px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.8em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Unit 5: The Link Layer, The Unsung Hero of Your Network</h1>
+            <div class="author-info">
+                <div>
+                    <div class="author-name">Priyanshu Singh</div>
+                    <div class="publish-date">Published on Oct 30, 2025</div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <article>
+                <h2>Introduction: The Local Delivery Service of the Internet</h2>
+                <p>
+                    Imagine the internet as a global postal service. The Network Layer (Layer 3) is the long-haul logistics expert; it figures out the best country-to-country route for your package using IP addresses. But how does that package get from the local sorting facility to your exact street address? Who navigates the neighborhood roads, avoids traffic, and ensures the package arrives at your doorstep intact?
+                </p>
+                <p>
+                    That’s the <strong>Data Link Layer (Layer 2)</strong>. It is the crucial, local delivery service of the digital world. Operating within the confines of a single network (like your home Wi-Fi or an office LAN), its job is to manage the reliable node-to-node transfer of data. It may not get the glamour of routing across continents, but without it, data would never complete the "last mile" of its journey. This layer is where the abstract bits and bytes of software meet the physical reality of hardware.
+                </p>
+                
+                <img src="https://www.tutorialspoint.com/data_communication_computer_network/images/osi_layers.jpg" alt="Diagram showing the Data Link Layer's position in the OSI Model.">
+                <p class="image-caption">The Data Link Layer is the bridge between the Network and Physical layers.</p>
+
+                <h2>Main Content: The Five Critical Jobs of the Link Layer</h2>
+                <p>The Link Layer juggles several complex tasks to ensure smooth local traffic flow. These are its primary responsibilities:</p>
+
+                <h3>1. Framing</h3>
+                <p>The Link Layer receives packets from the Network Layer and encapsulates them into <strong>frames</strong>. A frame is like a structured envelope for the data. It adds a <strong>header</strong> at the beginning and a <strong>trailer</strong> at the end. The header typically contains the source and destination hardware addresses, while the trailer often includes an error-checking code. This process packages the data for its journey across a physical medium.</p>
+
+                <h3>2. Physical Addressing</h3>
+                <p>While the Network Layer uses IP addresses for global routing, the Link Layer uses <strong>MAC (Media Access Control) addresses</strong> for local delivery. A MAC address is a unique 48-bit serial number burned into every network interface card (NIC) by the manufacturer. When your computer sends a frame to your router, it uses the router's MAC address to ensure it goes to the right device on your local network. It’s the difference between a person's name (IP address, can change) and their fingerprint (MAC address, permanent).</p>
+
+                <h3>3. Error Control</h3>
+                <p>Data can get corrupted during transmission due to electrical noise or interference. The Link Layer implements mechanisms to detect these errors. By calculating a value at the sender (like a checksum or CRC) and including it in the frame's trailer, it allows the receiver to perform the same calculation. If the results don't match, the receiver knows the frame is corrupted and can discard it, often triggering a request for retransmission. This ensures data integrity.</p>
+
+                <h3>4. Flow Control</h3>
+                <p>It’s possible for a sending device to transmit data much faster than the receiving device can process it. To prevent the receiver from being overwhelmed, the Link Layer uses flow control mechanisms. These are feedback-based systems where the receiver can signal to the sender to slow down or pause transmission, ensuring a manageable pace of data exchange.</p>
+
+                <h3>5. Access Control</h3>
+                <p>When multiple devices share the same communication medium (like a Wi-Fi channel or an old Ethernet hub), a critical question arises: who gets to transmit, and when? The MAC sub-layer is responsible for solving this. It implements protocols that govern access to the channel, preventing (or managing) the data collisions that would otherwise occur.</p>
+
+                <hr>
+
+                <h2>Deep Dive: Error Detection and Multiple Access Protocols</h2>
+
+                <h3>Keeping Data Clean: Cyclic Redundancy Check (CRC)</h3>
+                <p>Among error detection methods, <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check" target="_blank">Cyclic Redundancy Check (CRC)</a> is a powerful and widely-used technique. It treats the binary data of a frame as a large polynomial. This polynomial is divided by a pre-agreed "generator polynomial," and the remainder of this division becomes the Frame Check Sequence (FCS) stored in the frame's trailer. The receiver performs the same division. If the result has a zero remainder, the frame is considered error-free. CRC is especially adept at detecting "burst errors"—where multiple consecutive bits are corrupted—making it far more robust than simple parity checks.</p>
+                
+                <img src="https://www.includehelp.com/cn/images/cyclic-redundancy-check-1.jpg" alt="Diagram illustrating the Cyclic Redundancy Check (CRC) calculation and verification process.">
+                <p class="image-caption">CRC is a robust error-checking mechanism based on polynomial division.</p>
+
+                <h3>Rules of the Road: CSMA/CD vs. CSMA/CA</h3>
+                <p>Media access control is a fascinating problem. In a "random access" system, any device can try to send data at any time. The most famous protocols in this category belong to the <strong>CSMA (Carrier Sense Multiple Access)</strong> family.</p>
+                
+                <img src="https://binaryterms.com/wp-content/uploads/2021/04/Multiple-Access-Protocols.png" alt="Classification of Multiple Access Protocols into three main categories.">
+                <p class="image-caption">Multiple Access Protocols are essential for managing shared network channels.</p>
+                
+                <p>The core idea is "listen before you talk": a device first senses the channel to see if it's busy. But two main variations exist:</p>
+                <ul>
+                    <li><strong>CSMA/CD (Collision Detection):</strong> The protocol for classic <a href="https://en.wikipedia.org/wiki/Ethernet" target="_blank">Ethernet</a>. A device transmits but also listens while transmitting. If it detects that another device's signal is interfering with its own (a collision), it immediately stops, sends a jam signal to ensure all devices know about the collision, and waits a random "backoff" period before trying again.</li>
+                    <li><strong>CSMA/CA (Collision Avoidance):</strong> The protocol for Wi-Fi (<a href="https://www.ieee802.org/11/" target="_blank">IEEE 802.11</a>). In wireless environments, it's hard to detect a collision while transmitting. Therefore, devices try to *avoid* collisions. A station can send a short Request-to-Send (RTS) signal, and the access point grants permission with a Clear-to-Send (CTS) signal, telling other stations to remain quiet.</li>
+                </ul>
+
+                <img src="https://notesjam.com/wp-content/uploads/2019/02/CSMA-CD.png" alt="Diagram showing how CSMA/CD detects a collision and initiates a backoff period.">
+                <p class="image-caption">CSMA/CD's "listen while you talk" approach for wired networks.</p>
+
+                <hr>
+
+                <h2>Real-World Application: DOCSIS and the Evolution of Cable Internet</h2>
+                <p>
+                    A perfect case study of the Link Layer in action is <strong>DOCSIS (Data Over Cable Service Interface Specification)</strong>. This is the technology that enables high-speed internet to be delivered over the hybrid fiber-coaxial (HFC) networks of cable television providers.
+                </p>
+                <p>
+                    DOCSIS elegantly solves all the Link Layer problems in this challenging environment. The shared coaxial cable is a classic multiple-access medium, where hundreds of homes in a neighborhood compete for bandwidth. DOCSIS specifies how cable modems request and are granted upstream transmission slots from the provider's central system (CMTS). It defines the frame formats for both downstream and upstream data, and it incorporates powerful error correction to handle the noise-prone cable plant. The evolution from DOCSIS 1.0 (offering 40 Mbps downstream) to the latest DOCSIS 4.0 (enabling 10 Gbps speeds) is a direct reflection of advancing Link Layer technologies to meet the insatiable demand for bandwidth driven by streaming, gaming, and remote work.
+                </p>
+
+                <img src="https://www.volpefirm.com/wp-content/uploads/2020/06/docsis-network-diagram.png" alt="A network diagram showing how DOCSIS connects homes to the internet.">
+                <p class="image-caption">DOCSIS technology is a large-scale, real-world implementation of Link Layer principles.</p>
+                
+                <div class="summary-box">
+                    <h2>Summary & Key Takeaways</h2>
+                    <p>The Data Link Layer is the bedrock of local network communication. While it may not have the global scope of the Network Layer, its meticulous management of frames, addresses, errors, and access is what makes reliable digital communication possible.</p>
+                    <ul>
+                        <li><b>It's Local:</b> The Link Layer operates within a single network segment, handling node-to-node delivery using MAC addresses.</li>
+                        <li><b>It's a Gatekeeper:</b> Through framing, it packages data for physical transmission.</li>
+                        <li><b>It's a Proofreader:</b> Through error control (like CRC), it ensures data integrity.</li>
+                        <li><b>It's a Traffic Cop:</b> Through media access protocols (like CSMA/CD and CSMA/CA), it manages who gets to speak and when.</li>
+                        <li><b>It's Everywhere:</b> Technologies from Ethernet to Wi-Fi to DOCSIS are all fundamentally built on Link Layer principles.</li>
+                    </ul>
+                </div>
+                
+                <div class="references">
+                    <h3>References & Further Reading</h3>
+                    <ul>
+                        <li>Kurose, J. F., & Ross, K. W. (2021). *Computer Networking: A Top-Down Approach*. Pearson.</li>
+                        <li>Tanenbaum, A. S., & Wetherall, D. J. (2011). *Computer Networks*. Pearson Prentice Hall.</li>
+                        <li><a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">The OSI Model</a> - Cloudflare Learning Center</li>
+                        <li><a href="https://www.cablelabs.com/docsis" target="_blank">DOCSIS Specifications</a> - CableLabs</li>
+                    </ul>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>CA-3 Submission by Priyanshu Singh | Unit 5: The Link Layer</p>
+        </footer>
+    </div>
+
+</body>
+</html>
