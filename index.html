@@ -162,7 +162,7 @@
                     That’s the <strong>Data Link Layer (Layer 2)</strong>. It is the crucial, local delivery service of the digital world. Operating within the confines of a single network (like your home Wi-Fi or an office LAN), its job is to manage the reliable node-to-node transfer of data. It may not get the glamour of routing across continents, but without it, data would never complete the "last mile" of its journey. This layer is where the abstract bits and bytes of software meet the physical reality of hardware.
                 </p>
                 
-                <img src="https://www.tutorialspoint.com/data_communication_computer_network/images/osi_layers.jpg" alt="Diagram showing the Data Link Layer's position in the OSI Model.">
+                <img src="images\networking-osi_layers_data_link.png" alt="Diagram showing the Data Link Layer's position in the OSI Model.">
                 <p class="image-caption">The Data Link Layer is the bridge between the Network and Physical layers.</p>
 
                 <h2>Main Content: The Five Critical Jobs of the Link Layer</h2>
@@ -190,13 +190,13 @@
                 <h3>Keeping Data Clean: Cyclic Redundancy Check (CRC)</h3>
                 <p>Among error detection methods, <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check" target="_blank">Cyclic Redundancy Check (CRC)</a> is a powerful and widely-used technique. It treats the binary data of a frame as a large polynomial. This polynomial is divided by a pre-agreed "generator polynomial," and the remainder of this division becomes the Frame Check Sequence (FCS) stored in the frame's trailer. The receiver performs the same division. If the result has a zero remainder, the frame is considered error-free. CRC is especially adept at detecting "burst errors"—where multiple consecutive bits are corrupted—making it far more robust than simple parity checks.</p>
                 
-                <img src="https://www.includehelp.com/cn/images/cyclic-redundancy-check-1.jpg" alt="Diagram illustrating the Cyclic Redundancy Check (CRC) calculation and verification process.">
+                <img src="images\Error-Detection-Techniques.png" alt="Diagram illustrating the Cyclic Redundancy Check (CRC) calculation and verification process.">
                 <p class="image-caption">CRC is a robust error-checking mechanism based on polynomial division.</p>
 
                 <h3>Rules of the Road: CSMA/CD vs. CSMA/CA</h3>
                 <p>Media access control is a fascinating problem. In a "random access" system, any device can try to send data at any time. The most famous protocols in this category belong to the <strong>CSMA (Carrier Sense Multiple Access)</strong> family.</p>
                 
-                <img src="https://binaryterms.com/wp-content/uploads/2021/04/Multiple-Access-Protocols.png" alt="Classification of Multiple Access Protocols into three main categories.">
+                <img src="images\csma-ca-vs-csma-cd.png" alt="Classification of Multiple Access Protocols into three main categories.">
                 <p class="image-caption">Multiple Access Protocols are essential for managing shared network channels.</p>
                 
                 <p>The core idea is "listen before you talk": a device first senses the channel to see if it's busy. But two main variations exist:</p>
@@ -205,7 +205,7 @@
                     <li><strong>CSMA/CA (Collision Avoidance):</strong> The protocol for Wi-Fi (<a href="https://www.ieee802.org/11/" target="_blank">IEEE 802.11</a>). In wireless environments, it's hard to detect a collision while transmitting. Therefore, devices try to *avoid* collisions. A station can send a short Request-to-Send (RTS) signal, and the access point grants permission with a Clear-to-Send (CTS) signal, telling other stations to remain quiet.</li>
                 </ul>
 
-                <img src="https://notesjam.com/wp-content/uploads/2019/02/CSMA-CD.png" alt="Diagram showing how CSMA/CD detects a collision and initiates a backoff period.">
+                <img src="images\{0BF1D9B1-C850-47CE-8FA4-8BEE5C2D2073}.png" alt="Diagram showing how CSMA/CD detects a collision and initiates a backoff period.">
                 <p class="image-caption">CSMA/CD's "listen while you talk" approach for wired networks.</p>
 
                 <hr>
@@ -218,7 +218,7 @@
                     DOCSIS elegantly solves all the Link Layer problems in this challenging environment. The shared coaxial cable is a classic multiple-access medium, where hundreds of homes in a neighborhood compete for bandwidth. DOCSIS specifies how cable modems request and are granted upstream transmission slots from the provider's central system (CMTS). It defines the frame formats for both downstream and upstream data, and it incorporates powerful error correction to handle the noise-prone cable plant. The evolution from DOCSIS 1.0 (offering 40 Mbps downstream) to the latest DOCSIS 4.0 (enabling 10 Gbps speeds) is a direct reflection of advancing Link Layer technologies to meet the insatiable demand for bandwidth driven by streaming, gaming, and remote work.
                 </p>
 
-                <img src="https://www.volpefirm.com/wp-content/uploads/2020/06/docsis-network-diagram.png" alt="A network diagram showing how DOCSIS connects homes to the internet.">
+                <img src="images\archh.png" alt="A network diagram showing how DOCSIS connects homes to the internet.">
                 <p class="image-caption">DOCSIS technology is a large-scale, real-world implementation of Link Layer principles.</p>
                 
                 <div class="summary-box">
